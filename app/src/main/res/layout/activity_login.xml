@@ -17,11 +17,21 @@
         android:id="@+id/buttonLoginFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageLoginBackground"
+        android:layout_below="@+id/button_loginFacebook"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="16dp"
         android:text="Login with Facebook"
+        android:onClick="loginFacebook"
         android:textAllCaps="false" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/button_loginFacebook"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp" />
 
     <Button
         android:background="@drawable/rounded_button"
@@ -33,4 +43,7 @@
         android:layout_marginTop="16dp"
         android:text="Login with Google"
         android:textAllCaps="false" />
+
+
+
 </RelativeLayout>

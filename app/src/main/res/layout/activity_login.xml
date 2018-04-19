@@ -13,27 +13,22 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:background="@drawable/rounded_button"
         android:id="@+id/buttonLoginFacebook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button_loginFacebook"
+        android:layout_below="@+id/imageLoginBackground"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Login with Facebook"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/rounded_button"
+        android:drawablePadding="10dp"
         android:onClick="loginFacebook"
-        android:textAllCaps="false" />
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/button_loginFacebook"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp" />
+        android:text="@string/login_with_facebook"
+        android:textAllCaps="false"
+        android:textColor="@color/colorFacebook" />
 
     <Button
+        android:drawablePadding="10dp"
+        android:textColor="@color/colorGoogle"
         android:background="@drawable/rounded_button"
         android:id="@+id/buttonLoginGoogle"
         android:layout_width="wrap_content"
@@ -41,7 +36,7 @@
         android:layout_below="@+id/buttonLoginFacebook"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Login with Google"
+        android:text="@string/login_with_google"
         android:textAllCaps="false" />
 
 

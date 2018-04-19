@@ -29,6 +29,7 @@
         android:textColor="@color/colorFacebook" />
 
     <Button
+        android:onClick="loginGoogle"
         android:drawablePadding="10dp"
         android:textColor="@color/colorGoogle"
         android:background="@drawable/rounded_button"
@@ -42,7 +43,5 @@
         android:layout_marginTop="16dp"
         android:text="@string/login_with_google"
         android:textAllCaps="false" />
-
-
 
 </RelativeLayout>

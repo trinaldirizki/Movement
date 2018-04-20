@@ -9,4 +9,6 @@
     <string name="walking">Walking</string>
     <string name="cycling">Cycling</string>
     <string name="lets_move">Let\'s move!</string>
+    <string name="news_feed">News Feed</string>
+    <string name="navigation_menu">Navigation Menu</string>
 </resources>

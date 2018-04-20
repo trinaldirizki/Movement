@@ -104,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/rounded_orange_button"
         android:text="@string/lets_move"
         android:textAllCaps="false"

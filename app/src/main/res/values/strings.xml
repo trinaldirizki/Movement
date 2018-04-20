@@ -4,4 +4,9 @@
     <string name="fb_login_protocol_scheme">fb1697295270349882</string>
     <string name="login_with_facebook">Login with Facebook</string>
     <string name="login_with_google">Sign in with Google</string>
+    <string name="choose_your_activity">Choose your activity</string>
+    <string name="running">Running</string>
+    <string name="walking">Walking</string>
+    <string name="cycling">Cycling</string>
+    <string name="lets_move">Let\'s move!</string>
 </resources>

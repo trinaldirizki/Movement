@@ -7,10 +7,13 @@
     tools:context="movement.com.movement.LoginActivity">
 
     <ImageView
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/imageLoginBackground"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:contentDescription="LoginBackground" />
 
     <Button
         android:id="@+id/buttonLoginFacebook"

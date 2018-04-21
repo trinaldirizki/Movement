@@ -8,4 +8,7 @@
     <color name="colorFacebook">#3B5998</color>
     <color name="colorGoogle">#D62D20</color>
     <color name="colorWalking">#43A047</color>
+    <color name="colorRed">#F44336</color>
+    <color name="colorYellow">#FFEB3B</color>
+    <color name="colorAmber">#FFC107</color>
 </resources>

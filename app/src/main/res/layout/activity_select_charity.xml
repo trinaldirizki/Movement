@@ -12,7 +12,7 @@
     android:paddingTop="8dp"
     tools:context="movement.com.movement.SelectCharityActivity">
 
-    <TextView
+    <movement.com.movement.util.GradientTextView
         android:id="@+id/textDonation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -36,8 +36,8 @@ public class GradientTextView extends android.support.v7.widget.AppCompatTextVie
                     0,
                     0,
                     getHeight(),
-                    ContextCompat.getColor(getContext(), R.color.colorPrimary),
-                    ContextCompat.getColor(getContext(), R.color.colorAccent),
+                    ContextCompat.getColor(getContext(), R.color.colorRed),
+                    ContextCompat.getColor(getContext(), R.color.colorAmber),
                     Shader.TileMode.CLAMP));
         }
     }

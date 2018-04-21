@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/main"
     android:id="@+id/layoutMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="movement.com.movement.MainActivity">
-
 
     <TextView
         android:id="@+id/textChooseActivity"
@@ -22,7 +22,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textCycling"
@@ -33,7 +33,7 @@
         android:text="@string/cycling"
         app:layout_constraintEnd_toEndOf="@+id/imageCycling"
         app:layout_constraintStart_toStartOf="@+id/imageCycling"
-        app:layout_constraintTop_toBottomOf="@+id/imageCycling" />
+        app:layout_constraintTop_toBottomOf="@+id/imageCycling"/>
 
     <ImageButton
         android:id="@+id/imageRunning"
@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageCycling"
         app:layout_constraintStart_toEndOf="@+id/imageWalking"
         app:layout_constraintTop_toBottomOf="@+id/textChooseActivity"
-        app:srcCompat="@drawable/resize_running" />
+        app:srcCompat="@drawable/resize_running"/>
 
     <ImageButton
         android:id="@+id/imageWalking"
@@ -61,7 +61,7 @@
         android:onClick="selectActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageRunning"
-        app:srcCompat="@drawable/resize_walking" />
+        app:srcCompat="@drawable/resize_walking"/>
 
     <ImageButton
         android:id="@+id/imageCycling"
@@ -74,7 +74,7 @@
         android:onClick="selectActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageRunning"
-        app:srcCompat="@drawable/resize_cycling" />
+        app:srcCompat="@drawable/resize_cycling"/>
 
     <TextView
         android:id="@+id/textWalking"
@@ -85,7 +85,7 @@
         android:text="@string/walking"
         app:layout_constraintEnd_toEndOf="@+id/imageWalking"
         app:layout_constraintStart_toStartOf="@+id/imageWalking"
-        app:layout_constraintTop_toBottomOf="@+id/imageWalking" />
+        app:layout_constraintTop_toBottomOf="@+id/imageWalking"/>
 
     <TextView
         android:id="@+id/textRunning"
@@ -96,7 +96,7 @@
         android:text="@string/running"
         app:layout_constraintEnd_toEndOf="@+id/imageRunning"
         app:layout_constraintStart_toStartOf="@+id/imageRunning"
-        app:layout_constraintTop_toBottomOf="@+id/imageRunning" />
+        app:layout_constraintTop_toBottomOf="@+id/imageRunning"/>
 
     <Button
         android:id="@+id/buttonStartActivity"
@@ -112,7 +112,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageRunning" />
+        app:layout_constraintTop_toBottomOf="@+id/imageRunning"/>
 
     <ImageView
         android:id="@+id/imageChecked"
@@ -120,6 +120,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@id/imageWalking"
         app:layout_constraintEnd_toEndOf="@+id/imageWalking"
-        app:srcCompat="@drawable/resize_checked" />
+        app:srcCompat="@drawable/resize_checked"/>
 
 </android.support.constraint.ConstraintLayout>
+

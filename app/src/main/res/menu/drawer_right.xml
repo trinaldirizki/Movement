@@ -3,35 +3,35 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:showIn="navigation_view">
     <item
-        android:id="@+id/item_home"
+        android:id="@+id/nav_home"
         android:icon="@drawable/home"
         android:title="@string/home"/>
     <item
-        android:id="@+id/item_profile"
+        android:id="@+id/nav_profile"
         android:icon="@drawable/profile"
         android:title="@string/profile"/>
     <item
-        android:id="@+id/item_leader_board"
+        android:id="@+id/nav_leader_board"
         android:icon="@drawable/leaderboard"
         android:title="@string/leader_board"/>
     <item
-        android:id="@+id/item_news"
+        android:id="@+id/nav_news"
         android:icon="@drawable/news_feed"
         android:title="@string/news_feed"/>
     <item
-        android:id="@+id/item_help"
+        android:id="@+id/nav_help"
         android:icon="@drawable/help"
         android:title="@string/help_center"/>
     <item
-        android:id="@+id/item_share"
+        android:id="@+id/nav_share"
         android:icon="@drawable/share"
         android:title="@string/share"/>
     <item
-        android:id="@+id/item_settings"
+        android:id="@+id/nav_settings"
         android:icon="@drawable/settings"
         android:title="@string/settings"/>
     <item
-        android:id="@+id/item_sign_out"
+        android:id="@+id/nav_sign_out"
         android:icon="@drawable/signout"
         android:title="@string/sign_out"/>
 </menu>

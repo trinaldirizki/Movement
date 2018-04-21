@@ -5,11 +5,11 @@
     tools:context=".MainActivity">
 
     <item android:id="@+id/news_feed"
-        android:icon="@drawable/ic_news_feed_dark"
+        android:icon="@drawable/ic_newsfeed"
         app:showAsAction="always"
         android:title="@string/news_feed"/>
     <item android:id="@+id/navigation_menu"
-        android:icon="@drawable/ic_main_menu"
+        android:icon="@drawable/ic_menu"
         app:showAsAction="always"
         android:title="@string/navigation_menu"/>
 </menu>

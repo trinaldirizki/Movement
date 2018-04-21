@@ -18,18 +18,18 @@ public class Charity {
     }
 
     public static final Charity[] charities = {
-            new Charity("Laznas Dewan Da'wah", R.drawable.c1),
-            new Charity("Aksi Cepat Tanggap", R.drawable.c2),
-            new Charity("Yayasan Kanker Indonesia", R.drawable.c3),
-            new Charity("Yayasan Kesehatan Perempuan", R.drawable.c4),
-            new Charity("Peduli Anak Foundation", R.drawable.c5),
-            new Charity("RZ", R.drawable.c6),
-            new Charity("Yayasan Difabel Mandiri", R.drawable.c7),
-            new Charity("Yayasan Katarak Peduli", R.drawable.c8),
-            new Charity("WeCare.id", R.drawable.c9),
-            new Charity("WALHI", R.drawable.c10),
-            new Charity("Dompet Dhuafa", R.drawable.c11),
-            new Charity("Yayasan Jantung Indonesia", R.drawable.c12)
+            new Charity("Laznas Dewan Da'wah", R.drawable.ca1),
+            new Charity("Aksi Cepat Tanggap", R.drawable.ca2),
+            new Charity("Yayasan Kanker Indonesia", R.drawable.ca3),
+            new Charity("Yayasan Kesehatan Perempuan", R.drawable.ca4),
+            new Charity("Peduli Anak Foundation", R.drawable.ca5),
+            new Charity("RZ", R.drawable.ca6),
+            new Charity("Yayasan Difabel Mandiri", R.drawable.ca7),
+            new Charity("Yayasan Katarak Peduli", R.drawable.ca8),
+            new Charity("WeCare.id", R.drawable.ca9),
+            new Charity("WALHI", R.drawable.ca10),
+            new Charity("Dompet Dhuafa", R.drawable.ca11),
+            new Charity("Yayasan Jantung Indonesia", R.drawable.ca12)
     };
 
 

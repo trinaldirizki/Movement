@@ -1,5 +1,6 @@
 package movement.com.movement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -128,5 +129,10 @@ public class HomeActivity extends AppCompatActivity
         constraintSet.connect(mImageChecked.getId(), ConstraintSet.BOTTOM, view.getId(), ConstraintSet.BOTTOM);
         constraintSet.connect(mImageChecked.getId(), ConstraintSet.END, view.getId(), ConstraintSet.END);
         constraintSet.applyTo(mLayout);
+    }
+
+    public void selectCharity(View view) {
+        Intent intent = new Intent(this, SelectCharityActivity.class);
+        startActivity(intent);
     }
 }

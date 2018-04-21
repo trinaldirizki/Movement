@@ -38,7 +38,7 @@ public class CharityAdapter extends RecyclerView.Adapter<CharityAdapter.CharityV
 
     @Override
     public void onBindViewHolder(CharityViewHolder holder, int position) {
-        holder.textCharity.setText(charities.get(position).getName());
+        // holder.textCharity.setText(charities.get(position).getName());
         holder.imageCharity.setImageResource(charities.get(position).getThumbnailId());
     }
 
@@ -49,13 +49,13 @@ public class CharityAdapter extends RecyclerView.Adapter<CharityAdapter.CharityV
 
     public static class CharityViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textCharity;
+        // TextView textCharity;
         ImageView imageCharity;
 
         public CharityViewHolder(View itemView) {
             super(itemView);
 
-            textCharity = itemView.findViewById(R.id.textCharity);
+            // textCharity = itemView.findViewById(R.id.textCharity);
             imageCharity = itemView.findViewById(R.id.imageCharity);
 
         }

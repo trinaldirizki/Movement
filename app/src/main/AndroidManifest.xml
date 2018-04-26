@@ -52,7 +52,10 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SelectCharityActivity" />
         <activity android:name=".OverviewActivity" />
-        <activity android:name=".CountdownActivity"
+        <activity
+            android:name=".CountdownActivity"
+            android:theme="@style/splash" />
+        <activity android:name=".ProgressActivity"
             android:theme="@style/splash"/>
     </application>
 

@@ -1,6 +1,7 @@
 package movement.com.movement.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import movement.com.movement.OverviewActivity;
 import movement.com.movement.R;
 import movement.com.movement.model.Charity;
 
@@ -47,7 +49,7 @@ public class CharityAdapter extends RecyclerView.Adapter<CharityAdapter.CharityV
         return charities.size();
     }
 
-    public static class CharityViewHolder extends RecyclerView.ViewHolder {
+    public static class CharityViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // TextView textCharity;
         ImageView imageCharity;
@@ -57,8 +59,13 @@ public class CharityAdapter extends RecyclerView.Adapter<CharityAdapter.CharityV
 
             // textCharity = itemView.findViewById(R.id.textCharity);
             imageCharity = itemView.findViewById(R.id.imageCharity);
+            imageCharity.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(view.getContext(), OverviewActivity.class);
+            itemView.getContext().startActivity(intent);
         }
     }
-
 }

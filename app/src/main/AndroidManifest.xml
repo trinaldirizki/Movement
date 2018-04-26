@@ -51,7 +51,9 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SelectCharityActivity" />
-        <activity android:name=".OverviewActivity"></activity>
+        <activity android:name=".OverviewActivity" />
+        <activity android:name=".CountdownActivity"
+            android:theme="@style/splash"/>
     </application>
 
 </manifest>

@@ -11,10 +11,17 @@ import movement.com.movement.R;
 public class Charity {
     private String name;
     private int thumbnailId;
+    private CharityAction charityAction;
 
     private Charity(String name, int imageResourceId){
         this.name = name;
         this.thumbnailId = imageResourceId;
+    }
+
+    public Charity(String name, int thumbnailId, CharityAction charityAction) {
+        this.name = name;
+        this.thumbnailId = thumbnailId;
+        this.charityAction = charityAction;
     }
 
     public static final Charity[] charities = {
@@ -32,6 +39,13 @@ public class Charity {
             new Charity("Yayasan Jantung Indonesia", R.drawable.ca12)
     };
 
+    public CharityAction getCharityAction() {
+        return charityAction;
+    }
+
+    public void setCharityAction(CharityAction charityAction) {
+        this.charityAction = charityAction;
+    }
 
     public String getName() {
         return name;

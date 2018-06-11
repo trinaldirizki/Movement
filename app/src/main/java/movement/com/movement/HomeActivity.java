@@ -132,7 +132,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void selectCharity(View view) {
-        Intent intent = new Intent(this, SelectPictureActivity.class);
+        Intent intent = new Intent(this, ReviewActivity.class);
         startActivity(intent);
     }
 }

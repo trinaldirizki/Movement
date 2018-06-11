@@ -60,7 +60,11 @@
             android:theme="@style/splash"/>
         <activity android:name=".SelectPictureActivity">
         </activity>
-        <activity android:name=".ReviewActivity">
+        <activity
+            android:name=".ReviewActivity"
+            android:theme="@style/splash">
+        </activity>
+        <activity android:name=".NewsActivity">
         </activity>
     </application>
 

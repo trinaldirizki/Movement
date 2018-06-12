@@ -121,7 +121,6 @@ public class HomeActivity extends AppCompatActivity
                 text = getString(R.string.settings);
                 break;
             case R.id.nav_sign_out:
-                text = getString(R.string.sign_out);
                 FirebaseAuth.getInstance().signOut();
                 launchLoginActivity();
                 return true;
@@ -154,7 +153,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void selectCharity(View view) {
-        Intent intent = new Intent(this, ReviewActivity.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 

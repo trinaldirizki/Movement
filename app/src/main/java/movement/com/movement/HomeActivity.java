@@ -1,5 +1,6 @@
 package movement.com.movement;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,6 +8,8 @@ import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +22,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -52,7 +57,19 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.END)) {
             drawer.closeDrawer(GravityCompat.END);
         } else {
-            super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setTitle("Closing App")
+                    .setMessage("Are you sure you want to close this activity?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
         }
     }
 
@@ -71,12 +88,13 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.navigation_menu) {
             drawerLayout.openDrawer(GravityCompat.END);
+        } else if (id == R.id.news_feed) {
+            startActivity(new Intent(getApplicationContext(), NewsActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         String text = "";
@@ -91,8 +109,8 @@ public class HomeActivity extends AppCompatActivity
                 text = getString(R.string.leader_board);
                 break;
             case R.id.nav_news:
-                text = getString(R.string.news_feed);
-                break;
+                startActivity(new Intent(getApplicationContext(), NewsActivity.class));
+                return true;
             case R.id.nav_help:
                 text = getString(R.string.help_center);
                 break;
@@ -104,7 +122,9 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.nav_sign_out:
                 text = getString(R.string.sign_out);
-                break;
+                FirebaseAuth.getInstance().signOut();
+                launchLoginActivity();
+                return true;
         }
 
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
@@ -129,10 +149,18 @@ public class HomeActivity extends AppCompatActivity
         constraintSet.connect(mImageChecked.getId(), ConstraintSet.BOTTOM, view.getId(), ConstraintSet.BOTTOM);
         constraintSet.connect(mImageChecked.getId(), ConstraintSet.END, view.getId(), ConstraintSet.END);
         constraintSet.applyTo(mLayout);
+
+        Toast.makeText(this, selected, Toast.LENGTH_SHORT).show();
     }
 
     public void selectCharity(View view) {
         Intent intent = new Intent(this, ReviewActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchLoginActivity(){
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

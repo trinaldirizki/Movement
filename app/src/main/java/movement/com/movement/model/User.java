@@ -5,7 +5,7 @@ package movement.com.movement.model;
  */
 
 public class User {
-    private int id;
+    private String uid;
     private String name;
     private String email;
     private String photoUrl;
@@ -13,8 +13,8 @@ public class User {
     private int totalDistance;
     private int totalMovement;
 
-    public User(int id, String name, String email, String photoUrl, int totalDonation, int totalDistance, int totalMovement) {
-        this.id = id;
+    public User(String uid, String name, String email, String photoUrl, int totalDonation, int totalDistance, int totalMovement) {
+        this.uid = uid;
         this.name = name;
         this.email = email;
         this.photoUrl = photoUrl;
@@ -23,12 +23,12 @@ public class User {
         this.totalMovement = totalMovement;
     }
 
-    public int getId() {
-        return id;
+    public String getUid() {
+        return uid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(String uid) {
+        this.uid = uid;
     }
 
     public String getName() {

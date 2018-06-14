@@ -25,11 +25,11 @@ public class NewsActivity extends AppCompatActivity {
     }
 
     private void initNewsList() {
-        mNewsList.add(new News("25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
+        mNewsList.add(new News("1", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
+        mNewsList.add(new News("2", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
+        mNewsList.add(new News("3", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
+        mNewsList.add(new News("4", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
+        mNewsList.add(new News("5", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
     }
 
     private void initRecyclerNews() {

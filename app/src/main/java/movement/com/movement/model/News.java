@@ -6,6 +6,7 @@ package movement.com.movement.model;
 
 public class News {
 
+    private String uid;
     private String content;
     private String date;
     private String imageUrl;
@@ -14,10 +15,18 @@ public class News {
 
     }
 
-    public News(String content, String date, String imageUrl) {
+    public News(String uid, String content, String date, String imageUrl) {
         this.content = content;
         this.date = date;
         this.imageUrl = imageUrl;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getContent() {

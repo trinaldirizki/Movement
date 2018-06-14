@@ -7,7 +7,7 @@ package movement.com.movement.model;
 public class News {
 
     private String uid;
-    private String content;
+    private String title;
     private String date;
     private String imageUrl;
 
@@ -15,8 +15,8 @@ public class News {
 
     }
 
-    public News(String uid, String content, String date, String imageUrl) {
-        this.content = content;
+    public News(String uid, String title, String date, String imageUrl) {
+        this.title = title;
         this.date = date;
         this.imageUrl = imageUrl;
     }
@@ -29,12 +29,12 @@ public class News {
         this.uid = uid;
     }
 
-    public String getContent() {
-        return content;
+    public String getTitle() {
+        return title;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDate() {

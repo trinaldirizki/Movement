@@ -42,7 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.mTextNews.setText(mNewsList.get(position).getContent());
+        holder.mTextNews.setText(mNewsList.get(position).getTitle());
         holder.mTextDate.setText(mNewsList.get(position).getDate());
         Glide.with(mContext).load(mNewsList.get(position).getImageUrl()).into(holder.mImageNews);
         holder.mButtonShare.setOnClickListener(new View.OnClickListener() {

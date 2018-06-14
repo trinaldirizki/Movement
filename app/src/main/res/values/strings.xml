@@ -27,4 +27,6 @@
     <string name="title_activity_home">HomeActivity</string>
     <string name="achievement_detail">Achievement of our movements</string>
     <string name="select_charity">Select charity</string>
+    <string name="share_profile">Share profile</string>
+    <string name="edit_profile">Edit profile</string>
 </resources>

@@ -1,5 +1,6 @@
 package movement.com.movement;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -89,10 +90,16 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.navigation_menu) {
             drawerLayout.openDrawer(GravityCompat.END);
         } else if (id == R.id.news_feed) {
-            startActivity(new Intent(getApplicationContext(), NewsActivity.class));
+            navigateTo(NewsActivity.class, false);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void navigateTo(Class<?> activity, boolean clearTask) {
+        Intent intent = new Intent(getApplicationContext(), activity);
+        if (clearTask) intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     @Override
@@ -100,16 +107,16 @@ public class HomeActivity extends AppCompatActivity
         String text = "";
         switch (item.getItemId()){
             case R.id.nav_home:
-                text = getString(R.string.home);
-                break;
+                navigateTo(HomeActivity.class,false);
+                return true;
             case R.id.nav_profile:
-                text = getString(R.string.profile);
-                break;
+                navigateTo(ProfileActivity.class,false);
+                return true;
             case R.id.nav_leader_board:
                 text = getString(R.string.leader_board);
                 break;
             case R.id.nav_news:
-                startActivity(new Intent(getApplicationContext(), NewsActivity.class));
+                navigateTo(NewsActivity.class,false);
                 return true;
             case R.id.nav_help:
                 text = getString(R.string.help_center);
@@ -122,11 +129,11 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.nav_sign_out:
                 FirebaseAuth.getInstance().signOut();
-                launchLoginActivity();
+                navigateTo(LoginActivity.class, true);
                 return true;
         }
 
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, text + " currently unavailable.", Toast.LENGTH_SHORT).show();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.END);
         return true;
@@ -154,12 +161,6 @@ public class HomeActivity extends AppCompatActivity
 
     public void selectCharity(View view) {
         Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
-    }
-
-    private void launchLoginActivity(){
-        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }

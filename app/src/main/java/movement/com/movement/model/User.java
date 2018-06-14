@@ -13,6 +13,9 @@ public class User {
     private int totalDistance;
     private int totalMovement;
 
+    public User() {
+    }
+
     public User(String uid, String name, String email, String photoUrl, int totalDonation, int totalDistance, int totalMovement) {
         this.uid = uid;
         this.name = name;

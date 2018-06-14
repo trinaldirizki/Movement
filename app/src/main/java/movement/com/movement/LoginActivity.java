@@ -41,6 +41,8 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -53,6 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     Button mFacebookButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
+    private DatabaseReference mUserRef;
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final int RC_GOOGLE = 9001;
 
@@ -87,6 +90,8 @@ public class LoginActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        mUserRef = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
@@ -122,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            createOrUpdateUser(user);
                             launchMainActivity();
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -131,6 +137,10 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void createOrUpdateUser(FirebaseUser user) {
+
     }
 
     @Override
@@ -166,6 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            createOrUpdateUser(user);
                             Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
                             launchMainActivity();
                             //updateUI(user);

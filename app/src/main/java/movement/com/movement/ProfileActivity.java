@@ -47,6 +47,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         mBarChart = findViewById(R.id.bar_chart);
         mProfileImage = findViewById(R.id.image_profile);
         mProfileName = findViewById(R.id.text_profile_name);
@@ -151,6 +154,9 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
             case R.id.menu_share_profile:
                 break;
             case R.id.menu_edit_profile:

@@ -108,16 +108,16 @@ public class HomeActivity extends AppCompatActivity
         switch (item.getItemId()){
             case R.id.nav_home:
                 navigateTo(HomeActivity.class,false);
-                return true;
+                break;
             case R.id.nav_profile:
                 navigateTo(ProfileActivity.class,false);
-                return true;
+                break;
             case R.id.nav_leader_board:
                 text = getString(R.string.leader_board);
                 break;
             case R.id.nav_news:
                 navigateTo(NewsActivity.class,false);
-                return true;
+                break;
             case R.id.nav_help:
                 text = getString(R.string.help_center);
                 break;
@@ -130,10 +130,13 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_sign_out:
                 FirebaseAuth.getInstance().signOut();
                 navigateTo(LoginActivity.class, true);
-                return true;
+                break;
         }
 
-        Toast.makeText(this, text + " currently unavailable.", Toast.LENGTH_SHORT).show();
+        if (text.length() > 0){
+            Toast.makeText(this, text + " currently unavailable.", Toast.LENGTH_SHORT).show();
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.END);
         return true;
@@ -160,7 +163,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void selectCharity(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, SelectCharityActivity.class);
         startActivity(intent);
     }
 }

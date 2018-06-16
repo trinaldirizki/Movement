@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     ImageView mImage;
     TextView mTitle;
     TextView mDate;
-    Button mShareNews;
+    ImageButton mShareNews;
 
     public NewsViewHolder(final View itemView) {
         super(itemView);

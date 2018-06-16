@@ -1,6 +1,5 @@
 package movement.com.movement;
 
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,15 +26,15 @@ public class NewsActivity extends AppCompatActivity {
     private List<News> mNewsList = new ArrayList<>();
 
     private RecyclerView mRecyclerNews;
-    private DatabaseReference mDatabase;
+    private DatabaseReference mNewsRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("news");
-        mDatabase.keepSynced(true);
+        mNewsRef = FirebaseDatabase.getInstance().getReference().child("news");
+        mNewsRef.keepSynced(true);
 
         mRecyclerNews = findViewById(R.id.recycler_news);
         mRecyclerNews.setHasFixedSize(true);
@@ -49,7 +48,7 @@ public class NewsActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseRecyclerOptions<News> options = new FirebaseRecyclerOptions.Builder<News>()
-                                                    .setQuery(mDatabase, News.class)
+                                                    .setQuery(mNewsRef, News.class)
                                                     .build();
 
         FirebaseRecyclerAdapter<News, NewsViewHolder> newsAdapter = new FirebaseRecyclerAdapter<News, NewsViewHolder>(options){

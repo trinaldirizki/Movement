@@ -41,7 +41,7 @@ public class CharityAdapter extends RecyclerView.Adapter<CharityAdapter.CharityV
     @Override
     public void onBindViewHolder(CharityViewHolder holder, int position) {
         // holder.textCharity.setText(charities.get(position).getName());
-        holder.imageCharity.setImageResource(charities.get(position).getThumbnailId());
+        // holder.imageCharity.setImageResource(charities.get(position).getThumbnailId());
     }
 
     @Override

@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:color/background_light"
         android:orientation="vertical">
 
         <ImageView
@@ -23,34 +24,37 @@
 
         <TextView
             android:id="@+id/text_news"
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="0.45"
-            android:text="25 million rupiah have been raised for Difable Empowering"/>
+            android:text="25 million rupiah have been raised for Difable Empowering"
+            android:textColor="@android:color/primary_text_light"/>
 
         <RelativeLayout
-            android:layout_weight="0.05"
-            android:layout_margin="10dp"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.05"
+            android:orientation="horizontal">
 
             <TextView
-                android:text="15 May 2018"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
                 android:id="@+id/text_news_date"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:text="Share"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
+                android:text="15 May 2018"
+                android:textColor="@android:color/primary_text_light"/>
+
+            <ImageButton
+                android:background="@android:color/background_light"
                 android:id="@+id/button_share_news"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_share_dark"/>
 
         </RelativeLayout>
 

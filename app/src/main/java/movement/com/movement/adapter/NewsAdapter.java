@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,7 +64,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         ImageView mImageNews;
         TextView mTextNews;
         TextView mTextDate;
-        Button mButtonShare;
+        ImageButton mButtonShare;
 
         MyViewHolder(final View itemView) {
             super(itemView);

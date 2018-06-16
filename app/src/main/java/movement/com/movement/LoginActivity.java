@@ -2,7 +2,6 @@ package movement.com.movement;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,7 +30,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -48,9 +46,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.Arrays;
 
 import movement.com.movement.model.User;
@@ -61,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     Button mFacebookButton;
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
+    private DatabaseReference mUserRef;
     private static final String TAG = LoginActivity.class.getSimpleName();
     private static final int RC_GOOGLE = 9001;
 
@@ -97,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mUserRef = FirebaseDatabase.getInstance().getReference().child("users");
     }
 
     @Override
@@ -146,19 +141,19 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void createUser(final FirebaseUser user) {
-        Query query = mDatabase.child("users").orderByChild("uid").equalTo(user.getUid());
+        Query query = mUserRef.orderByChild("uid").equalTo(user.getUid());
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
                     User newUser = new User(user.getUid(), user.getDisplayName(), user.getEmail(), user.getPhotoUrl().toString(), 0, 0, 0);
-                    mDatabase.child("users").child(user.getUid()).setValue(newUser);
+                    mUserRef.child(user.getUid()).setValue(newUser);
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                // Database Error
             }
         });
     }

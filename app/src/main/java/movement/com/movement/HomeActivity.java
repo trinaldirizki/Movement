@@ -61,8 +61,7 @@ public class HomeActivity extends AppCompatActivity
             new AlertDialog.Builder(this)
                     .setTitle("Closing App")
                     .setMessage("Are you sure you want to close this activity?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                    {
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
@@ -98,26 +97,27 @@ public class HomeActivity extends AppCompatActivity
 
     private void navigateTo(Class<?> activity, boolean clearTask) {
         Intent intent = new Intent(getApplicationContext(), activity);
-        if (clearTask) intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        if (clearTask)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         String text = "";
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_home:
-                navigateTo(HomeActivity.class,false);
-                return true;
+                navigateTo(HomeActivity.class, false);
+                break;
             case R.id.nav_profile:
-                navigateTo(ProfileActivity.class,false);
-                return true;
+                navigateTo(ProfileActivity.class, false);
+                break;
             case R.id.nav_leader_board:
                 text = getString(R.string.leader_board);
                 break;
             case R.id.nav_news:
-                navigateTo(NewsActivity.class,false);
-                return true;
+                navigateTo(NewsActivity.class, false);
+                break;
             case R.id.nav_help:
                 text = getString(R.string.help_center);
                 break;
@@ -130,20 +130,23 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_sign_out:
                 FirebaseAuth.getInstance().signOut();
                 navigateTo(LoginActivity.class, true);
-                return true;
+                break;
         }
 
-        Toast.makeText(this, text + " currently unavailable.", Toast.LENGTH_SHORT).show();
+        if (text.length() > 0) {
+            Toast.makeText(this, text + " currently unavailable.", Toast.LENGTH_SHORT).show();
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.END);
         return true;
     }
 
-    public void selectActivity(View view){
+    public void selectActivity(View view) {
         String selected = "";
-        if (view == mImageWalking){
+        if (view == mImageWalking) {
             selected = "walking";
-        } else if (view == mImageRunning){
+        } else if (view == mImageRunning) {
             selected = "running";
         } else {
             selected = "cycling";
@@ -160,7 +163,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void selectCharity(View view) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, SelectCharityActivity.class);
         startActivity(intent);
     }
 }

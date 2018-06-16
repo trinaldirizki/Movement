@@ -18,7 +18,7 @@ import movement.com.movement.R;
 public class CharityViewHolder extends RecyclerView.ViewHolder {
 
     Context mContext;
-    ImageView mImageCharity;
+    public ImageView mImageCharity;
 
     public CharityViewHolder(View itemView) {
         super(itemView);
@@ -27,17 +27,17 @@ public class CharityViewHolder extends RecyclerView.ViewHolder {
         mImageCharity = itemView.findViewById(R.id.imageCharity);
     }
 
-    public void setImageCharity(Context context, String imageUrl) {
-        Glide.with(context).load(imageUrl).into(mImageCharity);
+    public void setImageCharity(String imageUrl) {
+        Glide.with(mContext).load(imageUrl).into(mImageCharity);
     }
 
-    public void setOnSelectedCharity(final Context context, final String uid) {
+    public void setOnSelectedCharity(final String uid) {
         mImageCharity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, OverviewActivity.class);
-                intent.putExtra("charity_uid", uid);
+                Intent intent = new Intent(mContext, OverviewActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("charity_uid", uid);
                 mContext.startActivity(intent);
             }
         });

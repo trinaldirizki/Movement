@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +35,7 @@ import movement.com.movement.model.User;
 public class ProfileActivity extends AppCompatActivity {
 
     BarChart mBarChart;
-    DatabaseReference mDatabase;
+    DatabaseReference mUserRef;
 
     CircleImageView mProfileImage;
     ProgressBar mProgressLevel;
@@ -46,6 +45,9 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mBarChart = findViewById(R.id.bar_chart);
         mProfileImage = findViewById(R.id.image_profile);
@@ -58,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
         mMovement = findViewById(R.id.text_profile_movement);
         mDistance = findViewById(R.id.text_profile_distance);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mUserRef = FirebaseDatabase.getInstance().getReference().child("users");
 
         initBarDataset();
     }
@@ -72,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void initProfile() {
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        Query query = mDatabase.child("users").orderByKey().equalTo(uid);
+        Query query = mUserRef.orderByKey().equalTo(uid);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -151,6 +153,9 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
+            case android.R.id.home:
+                super.onBackPressed();
+                return true;
             case R.id.menu_share_profile:
                 break;
             case R.id.menu_edit_profile:

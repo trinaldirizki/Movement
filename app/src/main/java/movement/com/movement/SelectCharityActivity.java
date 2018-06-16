@@ -1,5 +1,6 @@
 package movement.com.movement;
 
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,9 +53,19 @@ public class SelectCharityActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Charity, CharityViewHolder> charityAdapter = new FirebaseRecyclerAdapter<Charity, CharityViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(CharityViewHolder holder, int position, Charity model) {
-                holder.setImageCharity(getApplicationContext(), model.getImageUrl());
-                holder.setOnSelectedCharity(getApplicationContext(), model.getUid());
+            protected void onBindViewHolder(CharityViewHolder holder, int position, final Charity model) {
+                holder.setImageCharity(model.getImageUrl());
+//                holder.mImageCharity.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        final Charity charity = model;
+//                        Intent intent = new Intent(getApplicationContext(), OverviewActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        intent.putExtra("charity_uid", charity.getUid());
+//                        startActivity(intent);
+//                    }
+//                });
+                holder.setOnSelectedCharity(model.getUid());
             }
 
             @Override

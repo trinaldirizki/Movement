@@ -49,6 +49,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Arrays;
 
 import movement.com.movement.model.User;
+import movement.com.movement.util.ScreenNavigator;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -218,8 +219,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void launchMainActivity(){
-        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
+        ScreenNavigator.navigateTo(this, HomeActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
     }
 }

@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import movement.com.movement.util.ScreenNavigator;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -89,34 +91,34 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.navigation_menu) {
             drawerLayout.openDrawer(GravityCompat.END);
         } else if (id == R.id.news_feed) {
-            navigateTo(NewsActivity.class, false);
+            ScreenNavigator.navigateTo(getApplicationContext(), NewsActivity.class);
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    private void navigateTo(Class<?> activity, boolean clearTask) {
-        Intent intent = new Intent(getApplicationContext(), activity);
-        if (clearTask)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
+//    private void navigateTo(Class<?> activity, boolean clearTask) {
+//        Intent intent = new Intent(getApplicationContext(), activity);
+//        if (clearTask)
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//        startActivity(intent);
+//    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         String text = "";
         switch (item.getItemId()) {
             case R.id.nav_home:
-                navigateTo(HomeActivity.class, false);
+                ScreenNavigator.navigateTo(getApplicationContext(), HomeActivity.class);
                 break;
             case R.id.nav_profile:
-                navigateTo(ProfileActivity.class, false);
+                ScreenNavigator.navigateTo(getApplicationContext(), ProfileActivity.class);
                 break;
             case R.id.nav_leader_board:
                 text = getString(R.string.leader_board);
                 break;
             case R.id.nav_news:
-                navigateTo(NewsActivity.class, false);
+                ScreenNavigator.navigateTo(getApplicationContext(), NewsActivity.class);
                 break;
             case R.id.nav_help:
                 text = getString(R.string.help_center);
@@ -129,7 +131,7 @@ public class HomeActivity extends AppCompatActivity
                 break;
             case R.id.nav_sign_out:
                 FirebaseAuth.getInstance().signOut();
-                navigateTo(LoginActivity.class, true);
+                ScreenNavigator.navigateTo(getApplicationContext(), LoginActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 break;
         }
 
@@ -163,7 +165,6 @@ public class HomeActivity extends AppCompatActivity
     }
 
     public void selectCharity(View view) {
-        Intent intent = new Intent(this, SelectCharityActivity.class);
-        startActivity(intent);
+        ScreenNavigator.navigateTo(this, SelectCharityActivity.class);
     }
 }

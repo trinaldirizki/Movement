@@ -18,6 +18,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import movement.com.movement.model.Movement;
+import movement.com.movement.util.StringFormatter;
 
 public class OverviewActivity extends AppCompatActivity {
 
@@ -46,9 +47,9 @@ public class OverviewActivity extends AppCompatActivity {
 
     private void showMovement(Movement movement) {
         Glide.with(this).load(movement.getImageUrl()).into(mImage);
-        mTextTargetDonation.setText(movement.getTargetDonation());
-        mTextDistance.setText(movement.getTargetDistance());
-        mTextCurrentDonation.setText(movement.getCurrentDonation());
+        mTextTargetDonation.setText(StringFormatter.convertCurrency(movement.getTargetDonation()));
+        mTextDistance.setText(StringFormatter.convertDistance(movement.getTargetDistance()));
+        mTextCurrentDonation.setText(StringFormatter.convertCurrency(movement.getCurrentDonation()));
         mTextTitle.setText(movement.getName());
         mTextDetail.setText(movement.getDetail());
     }

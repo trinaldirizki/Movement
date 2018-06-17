@@ -55,17 +55,7 @@ public class SelectCharityActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(CharityViewHolder holder, int position, final Charity model) {
                 holder.setImageCharity(model.getImageUrl());
-//                holder.mImageCharity.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        final Charity charity = model;
-//                        Intent intent = new Intent(getApplicationContext(), OverviewActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        intent.putExtra("charity_uid", charity.getUid());
-//                        startActivity(intent);
-//                    }
-//                });
-                holder.setOnSelectedCharity(model.getUid());
+                holder.setOnSelectedCharity(model.getMovement());
             }
 
             @Override

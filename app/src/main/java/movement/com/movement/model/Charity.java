@@ -13,15 +13,17 @@ public class Charity {
     private String name;
     private String imageUrl;
     private String detail;
+    private Movement movement;
 
     public Charity() {
     }
 
-    public Charity(String uid, String name, String imageUrl, String detail) {
+    public Charity(String uid, String name, String imageUrl, String detail, Movement movement) {
         this.uid = uid;
         this.name = name;
         this.imageUrl = imageUrl;
         this.detail = detail;
+        this.movement = movement;
     }
 
     public String getUid() {
@@ -54,6 +56,14 @@ public class Charity {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public Movement getMovement() {
+        return movement;
+    }
+
+    public void setMovement(Movement movement) {
+        this.movement = movement;
     }
 
     //    public static final Charity[] charities = {

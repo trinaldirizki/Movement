@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 
 import movement.com.movement.OverviewActivity;
 import movement.com.movement.R;
+import movement.com.movement.model.Movement;
 
 /**
  * Created by isma-ilou on 16.06.2018.
@@ -31,13 +32,13 @@ public class CharityViewHolder extends RecyclerView.ViewHolder {
         Glide.with(mContext).load(imageUrl).into(mImageCharity);
     }
 
-    public void setOnSelectedCharity(final String uid) {
+    public void setOnSelectedCharity(final Movement movement) {
         mImageCharity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, OverviewActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("charity_uid", uid);
+                intent.putExtra("parcel_movement", movement);
                 mContext.startActivity(intent);
             }
         });

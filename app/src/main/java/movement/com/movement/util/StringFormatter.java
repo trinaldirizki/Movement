@@ -9,17 +9,20 @@ import java.text.DecimalFormatSymbols;
 
 public class StringFormatter {
 
-    public static String convertCurrency(int value){
+    private static DecimalFormat getFormatter() {
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-        symbols.setDecimalSeparator('.');
-        DecimalFormat decimalFormat = new DecimalFormat("Rp ###,###,###,###", symbols);
-        String formattedText = decimalFormat.format(value);
-        return formattedText;
+        symbols.setDecimalSeparator(',');
+        symbols.setGroupingSeparator('.');
+        DecimalFormat format = new DecimalFormat("Rp ###,###,###,###", symbols);
+        return format;
     }
 
-    public static String convertDistance(int value){
+    public static String convertCurrency(int value){
+        return getFormatter().format(value);
+    }
+
+    public static String convertDistance(int value) {
         float km = (float) value / 1000;
-        String formattedText = km + " km";
-        return formattedText;
+        return getFormatter().format(km);
     }
 }

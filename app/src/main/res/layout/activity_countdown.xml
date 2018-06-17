@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageSponsor"
+        android:id="@+id/image_sponsor"
         android:layout_width="240dp"
         android:layout_height="80dp"
         android:layout_marginEnd="8dp"
@@ -30,12 +30,12 @@
         android:text="proudly supporting your movement"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="@+id/imageSponsor"
-        app:layout_constraintStart_toStartOf="@+id/imageSponsor"
-        app:layout_constraintTop_toBottomOf="@+id/imageSponsor" />
+        app:layout_constraintEnd_toEndOf="@+id/image_sponsor"
+        app:layout_constraintStart_toStartOf="@+id/image_sponsor"
+        app:layout_constraintTop_toBottomOf="@+id/image_sponsor" />
 
     <TextView
-        android:id="@+id/textCountdown"
+        android:id="@+id/text_countdown"
         android:layout_width="83dp"
         android:layout_height="189dp"
         android:layout_marginBottom="8dp"
@@ -50,5 +50,5 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSponsor"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.276"/>
 </android.support.constraint.ConstraintLayout>

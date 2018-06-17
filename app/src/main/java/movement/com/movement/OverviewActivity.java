@@ -2,11 +2,13 @@ package movement.com.movement;
 
 import android.content.Intent;
 import android.provider.ContactsContract;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -24,6 +26,7 @@ public class OverviewActivity extends AppCompatActivity {
 
     ImageView mImage;
     TextView mTextTargetDonation, mTextDistance, mTextCurrentDonation, mTextProgress, mTextTitle, mTextDetail;
+    ProgressBar mProgressBar;
 
     Movement mMovement;
 
@@ -39,6 +42,7 @@ public class OverviewActivity extends AppCompatActivity {
         mTextProgress = findViewById(R.id.text_overview_progress);
         mTextTitle = findViewById(R.id.text_overview_title);
         mTextDetail = findViewById(R.id.text_overview_detail);
+        mProgressBar = findViewById(R.id.progress_overview);
 
         mMovement = getIntent().getParcelableExtra("parcel_movement");
         if (mMovement != null) showMovement(mMovement);
@@ -52,10 +56,15 @@ public class OverviewActivity extends AppCompatActivity {
         mTextCurrentDonation.setText(StringFormatter.convertCurrency(movement.getCurrentDonation()));
         mTextTitle.setText(movement.getName());
         mTextDetail.setText(movement.getDetail());
+
+        int progress = (int) ((float) movement.getCurrentDistance() / movement.getTargetDistance() * 100);
+        mProgressBar.setProgress(progress);
+        String progressText = String.valueOf(progress) + "% achieved";
+        mTextProgress.setText(progressText);
     }
 
     public void startMoving(View view) {
-        Intent intent = new Intent(this, ProgressActivity.class);
+        Intent intent = new Intent(this, CountdownActivity.class);
         startActivity(intent);
     }
 }

@@ -1,10 +1,13 @@
 package movement.com.movement.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by isma-ilou on 14.06.2018.
  */
 
-public class User {
+public class User implements Parcelable {
     private String uid;
     private String name;
     private String email;
@@ -25,6 +28,44 @@ public class User {
         this.totalDistance = totalDistance;
         this.totalMovement = totalMovement;
     }
+
+    protected User(Parcel in) {
+        uid = in.readString();
+        name = in.readString();
+        email = in.readString();
+        photoUrl = in.readString();
+        totalDonation = in.readInt();
+        totalDistance = in.readInt();
+        totalMovement = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(photoUrl);
+        dest.writeInt(totalDonation);
+        dest.writeInt(totalDistance);
+        dest.writeInt(totalMovement);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getUid() {
         return uid;

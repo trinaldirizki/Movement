@@ -31,7 +31,7 @@ public class CountdownActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_countdown);
 
-        mSponsorRef = FirebaseDatabase.getInstance().getReference().child("sponsor");
+        mSponsorRef = FirebaseDatabase.getInstance().getReference().child("sponsors");
 
         mImageSponsor = findViewById(R.id.image_sponsor);
         mTextCountdown = findViewById(R.id.text_countdown);
@@ -51,7 +51,7 @@ public class CountdownActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                ScreenNavigator.navigateTo(getApplicationContext(), ProfileActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK);
+                ScreenNavigator.navigateTo(getApplicationContext(), ProgressActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK, "parcel_sponsor", mSponsor);
                 finish();
             }
         }.start();
@@ -63,7 +63,7 @@ public class CountdownActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    mSponsor = dataSnapshot.getValue(Sponsor.class);
+                    mSponsor = dataSnapshot.child("001").getValue(Sponsor.class);
                     showSponsor();
                 }
             }

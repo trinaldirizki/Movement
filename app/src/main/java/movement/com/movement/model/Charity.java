@@ -1,6 +1,8 @@
 package movement.com.movement.model;
 
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import movement.com.movement.R;
 
@@ -8,7 +10,7 @@ import movement.com.movement.R;
  * Created by mobiltrakya on 21/04/2018.
  */
 
-public class Charity {
+public class Charity implements Parcelable{
     private String uid;
     private String name;
     private String imageUrl;
@@ -25,6 +27,40 @@ public class Charity {
         this.detail = detail;
         this.movement = movement;
     }
+
+    protected Charity(Parcel in) {
+        uid = in.readString();
+        name = in.readString();
+        imageUrl = in.readString();
+        detail = in.readString();
+        movement = in.readParcelable(Movement.class.getClassLoader());
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(name);
+        dest.writeString(imageUrl);
+        dest.writeString(detail);
+        dest.writeParcelable(movement, flags);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Charity> CREATOR = new Creator<Charity>() {
+        @Override
+        public Charity createFromParcel(Parcel in) {
+            return new Charity(in);
+        }
+
+        @Override
+        public Charity[] newArray(int size) {
+            return new Charity[size];
+        }
+    };
 
     public String getUid() {
         return uid;

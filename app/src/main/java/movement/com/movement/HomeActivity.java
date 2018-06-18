@@ -1,27 +1,20 @@
 package movement.com.movement;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.Parcelable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,12 +22,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import movement.com.movement.util.ScreenNavigator;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        HomeFragment.OnFragmentInteractionListener {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    Button mStartActivity;
-    ImageView mImageWalking, mImageRunning, mImageCycling, mImageChecked;
-    ConstraintLayout mLayout;
+    private static final String TAG = HomeActivity.class.getSimpleName();
+    FrameLayout mFragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +38,17 @@ public class HomeActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view_right);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mLayout = findViewById(R.id.layoutMain);
-        mImageWalking = findViewById(R.id.imageWalking);
-        mImageRunning = findViewById(R.id.imageRunning);
-        mImageCycling = findViewById(R.id.imageCycling);
-        mImageChecked = findViewById(R.id.imageChecked);
-        mStartActivity = findViewById(R.id.buttonStartActivity);
+        mFragmentContainer = findViewById(R.id.fragment_container_main);
+
+        openHomeFragment();
+    }
+
+    private void openHomeFragment() {
+        HomeFragment fragment = new HomeFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.addToBackStack(null);
+        transaction.replace(R.id.fragment_container_main, fragment, "HOME_FRAGMENT").commit();
     }
 
     @Override
@@ -78,7 +75,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
 
@@ -91,28 +88,20 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.navigation_menu) {
             drawerLayout.openDrawer(GravityCompat.END);
         } else if (id == R.id.news_feed) {
-            ScreenNavigator.navigateTo(getApplicationContext(), NewsActivity.class);
+            ScreenNavigator.navigateTo(getApplicationContext(), NewsActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK);
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-//    private void navigateTo(Class<?> activity, boolean clearTask) {
-//        Intent intent = new Intent(getApplicationContext(), activity);
-//        if (clearTask)
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         String text = "";
         switch (item.getItemId()) {
             case R.id.nav_home:
-                ScreenNavigator.navigateTo(getApplicationContext(), HomeActivity.class);
                 break;
             case R.id.nav_profile:
-                ScreenNavigator.navigateTo(getApplicationContext(), ProfileActivity.class);
+                ScreenNavigator.navigateTo(getApplicationContext(), ProfileActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK);
                 break;
             case R.id.nav_leader_board:
                 text = getString(R.string.leader_board);
@@ -144,27 +133,8 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
 
-    public void selectActivity(View view) {
-        String selected = "";
-        if (view == mImageWalking) {
-            selected = "walking";
-        } else if (view == mImageRunning) {
-            selected = "running";
-        } else {
-            selected = "cycling";
-        }
+    @Override
+    public void onFragmentInteraction(Parcelable parcelable) {
 
-        ConstraintSet constraintSet = new ConstraintSet();
-        constraintSet.clone(mLayout);
-
-        constraintSet.connect(mImageChecked.getId(), ConstraintSet.BOTTOM, view.getId(), ConstraintSet.BOTTOM);
-        constraintSet.connect(mImageChecked.getId(), ConstraintSet.END, view.getId(), ConstraintSet.END);
-        constraintSet.applyTo(mLayout);
-
-        Toast.makeText(this, selected, Toast.LENGTH_SHORT).show();
-    }
-
-    public void selectCharity(View view) {
-        ScreenNavigator.navigateTo(this, SelectCharityActivity.class);
     }
 }

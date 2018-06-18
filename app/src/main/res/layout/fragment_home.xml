@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutMain"
-    android:background="@drawable/main"
+    android:id="@+id/layout_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="movement.com.movement.MainActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="movement.com.movement.HomeFragment">
 
     <TextView
         android:id="@+id/textChooseActivity"
@@ -45,7 +43,6 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/circle_button"
         android:contentDescription="@string/running"
-        android:onClick="selectActivity"
         app:layout_constraintEnd_toStartOf="@+id/imageCycling"
         app:layout_constraintStart_toEndOf="@+id/imageWalking"
         app:layout_constraintTop_toBottomOf="@+id/textChooseActivity"
@@ -59,7 +56,6 @@
         android:layout_marginStart="24dp"
         android:background="@drawable/circle_button"
         android:contentDescription="@string/walking"
-        android:onClick="selectActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageRunning"
         app:srcCompat="@drawable/resize_walking"/>
@@ -72,7 +68,6 @@
         android:layout_marginRight="24dp"
         android:background="@drawable/circle_button"
         android:contentDescription="@string/cycling"
-        android:onClick="selectActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageRunning"
         app:srcCompat="@drawable/resize_cycling"/>
@@ -124,4 +119,3 @@
         app:srcCompat="@drawable/resize_checked"/>
 
 </android.support.constraint.ConstraintLayout>
-

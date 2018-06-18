@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import movement.com.movement.OverviewActivity;
 import movement.com.movement.R;
 import movement.com.movement.model.Movement;
+import movement.com.movement.util.ScreenNavigator;
 
 /**
  * Created by isma-ilou on 16.06.2018.
@@ -36,10 +37,7 @@ public class CharityViewHolder extends RecyclerView.ViewHolder {
         mImageCharity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, OverviewActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("parcel_movement", movement);
-                mContext.startActivity(intent);
+                ScreenNavigator.navigateTo(mContext, OverviewActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK, "parcel_movement", movement);
             }
         });
     }

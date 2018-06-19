@@ -1,5 +1,9 @@
 package movement.com.movement;
 
+import android.net.Uri;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,46 +20,27 @@ import com.google.firebase.database.FirebaseDatabase;
 import movement.com.movement.model.Charity;
 import movement.com.movement.viewholder.CharityViewHolder;
 
-public class CharityActivity extends AppCompatActivity {
+public class CharityActivity extends AppCompatActivity
+        implements CharityListFragment.OnFragmentInteractionListener {
 
-    DatabaseReference mCharityRef;
-    RecyclerView mRecyclerCharity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_select_charity);
+        setContentView(R.layout.activity_charity);
 
-        mCharityRef = FirebaseDatabase.getInstance().getReference().child("charities");
-        mCharityRef.keepSynced(true);
+        displayFragment(new CharityListFragment(), false);
+    }
 
-        mRecyclerCharity = findViewById(R.id.recycler_view);
-        mRecyclerCharity.setHasFixedSize(true);
-        mRecyclerCharity.setLayoutManager(new GridLayoutManager(this, 3));
+    private void displayFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_charity, fragment, fragment.getClass().getSimpleName());
+        if (addToBackStack) transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerOptions<Charity> options = new FirebaseRecyclerOptions.Builder<Charity>()
-                                                    .setQuery(mCharityRef, Charity.class)
-                                                    .build();
+    public void onFragmentInteraction(Uri uri) {
 
-        FirebaseRecyclerAdapter<Charity, CharityViewHolder> charityAdapter = new FirebaseRecyclerAdapter<Charity, CharityViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(CharityViewHolder holder, int position, final Charity model) {
-                holder.setImageCharity(model.getImageUrl());
-                holder.setOnSelectedCharity(model.getMovement());
-            }
-
-            @Override
-            public CharityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.cardview_item_charity, parent, false);
-                return new CharityViewHolder(view);
-            }
-        };
-
-        charityAdapter.startListening();
-        mRecyclerCharity.setAdapter(charityAdapter);
     }
 }

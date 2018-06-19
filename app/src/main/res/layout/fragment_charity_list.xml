@@ -10,7 +10,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="8dp"
-    tools:context="movement.com.movement.CharityActivity">
+    tools:context="movement.com.movement.CharityListFragment">
 
     <movement.com.movement.util.GradientTextView
         android:id="@+id/textDonation"
@@ -47,7 +47,7 @@
             />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            android:id="@+id/recycler_charity"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>

@@ -44,7 +44,6 @@ public class HomeActivity extends AppCompatActivity
         NewsFragment.OnFragmentInteractionListener {
 
     NavigationView mNavigationView;
-    FrameLayout mFragmentContainer;
     CircleImageView mImageUser;
     TextView mTextUsername, mTextEmail;
 
@@ -63,8 +62,6 @@ public class HomeActivity extends AppCompatActivity
         mImageUser = view.findViewById(R.id.image_header_user);
         mTextUsername = view.findViewById(R.id.text_header_username);
         mTextEmail = view.findViewById(R.id.text_header_email);
-
-        mFragmentContainer = findViewById(R.id.fragment_container_main);
 
         mUserRef = FirebaseDatabase.getInstance().getReference().child("users");
 

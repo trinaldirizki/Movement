@@ -122,4 +122,9 @@ public class User implements Parcelable {
     public void setTotalMovement(int totalMovement) {
         this.totalMovement = totalMovement;
     }
+
+    @Override
+    public String toString() {
+        return this.name + "\n" + this.email;
+    }
 }

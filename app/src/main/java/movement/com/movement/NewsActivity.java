@@ -23,8 +23,6 @@ import movement.com.movement.viewholder.NewsViewHolder;
 
 public class NewsActivity extends AppCompatActivity {
 
-    private List<News> mNewsList = new ArrayList<>();
-
     private RecyclerView mRecyclerNews;
     private DatabaseReference mNewsRef;
 
@@ -39,9 +37,6 @@ public class NewsActivity extends AppCompatActivity {
         mRecyclerNews = findViewById(R.id.recycler_news);
         mRecyclerNews.setHasFixedSize(true);
         mRecyclerNews.setLayoutManager(new LinearLayoutManager(this));
-
-        // initNewsList();
-        // initRecyclerNews();
     }
 
     @Override
@@ -70,21 +65,5 @@ public class NewsActivity extends AppCompatActivity {
         newsAdapter.startListening();
         mRecyclerNews.setAdapter(newsAdapter);
 
-    }
-
-    private void initNewsList() {
-        mNewsList.add(new News("1", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("2", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("3", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("4", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-        mNewsList.add(new News("5", "25 million rupiah have been raised for Difable Empowering", "25 May 2018", "http://via.placeholder.com/400.png"));
-    }
-
-    private void initRecyclerNews() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        RecyclerView recyclerNews = findViewById(R.id.recycler_news);
-        recyclerNews.setLayoutManager(layoutManager);
-        NewsAdapter adapter = new NewsAdapter(this, mNewsList);
-        recyclerNews.setAdapter(adapter);
     }
 }

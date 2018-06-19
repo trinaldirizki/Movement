@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import movement.com.movement.model.Charity;
 import movement.com.movement.viewholder.CharityViewHolder;
 
-public class SelectCharityActivity extends AppCompatActivity {
+public class CharityActivity extends AppCompatActivity {
 
     DatabaseReference mCharityRef;
     RecyclerView mRecyclerCharity;

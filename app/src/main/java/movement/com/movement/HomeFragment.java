@@ -6,6 +6,8 @@ import android.os.Parcelable;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,12 +53,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mLayout = view.findViewById(R.id.layout_home);
-        mImageWalking = view.findViewById(R.id.imageWalking);
-        mImageRunning = view.findViewById(R.id.imageRunning);
-        mImageCycling = view.findViewById(R.id.imageCycling);
-        mImageChecked = view.findViewById(R.id.imageChecked);
-        mButtonStart = view.findViewById(R.id.buttonStartActivity);
+        mLayout = view.findViewById(R.id.container_home);
+        mImageWalking = view.findViewById(R.id.image_walking);
+        mImageRunning = view.findViewById(R.id.image_running);
+        mImageCycling = view.findViewById(R.id.image_cycling);
+        mImageChecked = view.findViewById(R.id.image_checked);
+        mButtonStart = view.findViewById(R.id.button_start_activity);
 
         mImageWalking.setOnClickListener(activityOnClickListener);
         mImageRunning.setOnClickListener(activityOnClickListener);
@@ -83,6 +85,21 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+
+        AppCompatActivity compatActivity = (AppCompatActivity) getActivity();
+        if (compatActivity != null){
+            ActionBar actionBar = compatActivity.getSupportActionBar();
+            if (actionBar != null){
+                actionBar.setDisplayShowHomeEnabled(false);
+                actionBar.setDisplayHomeAsUpEnabled(false);
+                actionBar.setTitle("Movement");
+            }
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
@@ -102,7 +119,7 @@ public class HomeFragment extends Fragment {
     private View.OnClickListener activityStartListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ScreenNavigator.navigateTo(getContext(), SelectCharityActivity.class);
+            ScreenNavigator.navigateTo(getContext(), CharityActivity.class);
         }
     };
 

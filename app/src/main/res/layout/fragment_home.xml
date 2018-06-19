@@ -2,14 +2,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_home"
+    android:id="@+id/container_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="movement.com.movement.HomeFragment">
 
     <TextView
-        android:id="@+id/textChooseActivity"
+        android:id="@+id/text_choose_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -24,18 +24,18 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/textCycling"
+        android:id="@+id/text_cycling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/cycling"
-        app:layout_constraintEnd_toEndOf="@+id/imageCycling"
-        app:layout_constraintStart_toStartOf="@+id/imageCycling"
-        app:layout_constraintTop_toBottomOf="@+id/imageCycling"/>
+        app:layout_constraintEnd_toEndOf="@+id/image_cycling"
+        app:layout_constraintStart_toStartOf="@+id/image_cycling"
+        app:layout_constraintTop_toBottomOf="@+id/image_cycling"/>
 
     <ImageButton
-        android:id="@+id/imageRunning"
+        android:id="@+id/image_running"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -43,13 +43,13 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/circle_button"
         android:contentDescription="@string/running"
-        app:layout_constraintEnd_toStartOf="@+id/imageCycling"
-        app:layout_constraintStart_toEndOf="@+id/imageWalking"
-        app:layout_constraintTop_toBottomOf="@+id/textChooseActivity"
+        app:layout_constraintEnd_toStartOf="@+id/image_cycling"
+        app:layout_constraintStart_toEndOf="@+id/image_walking"
+        app:layout_constraintTop_toBottomOf="@+id/text_choose_activity"
         app:srcCompat="@drawable/resize_running"/>
 
     <ImageButton
-        android:id="@+id/imageWalking"
+        android:id="@+id/image_walking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
@@ -57,11 +57,11 @@
         android:background="@drawable/circle_button"
         android:contentDescription="@string/walking"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageRunning"
+        app:layout_constraintTop_toTopOf="@+id/image_running"
         app:srcCompat="@drawable/resize_walking"/>
 
     <ImageButton
-        android:id="@+id/imageCycling"
+        android:id="@+id/image_cycling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -69,33 +69,33 @@
         android:background="@drawable/circle_button"
         android:contentDescription="@string/cycling"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageRunning"
+        app:layout_constraintTop_toTopOf="@+id/image_running"
         app:srcCompat="@drawable/resize_cycling"/>
 
     <TextView
-        android:id="@+id/textWalking"
+        android:id="@+id/text_walking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/walking"
-        app:layout_constraintEnd_toEndOf="@+id/imageWalking"
-        app:layout_constraintStart_toStartOf="@+id/imageWalking"
-        app:layout_constraintTop_toBottomOf="@+id/imageWalking"/>
+        app:layout_constraintEnd_toEndOf="@+id/image_walking"
+        app:layout_constraintStart_toStartOf="@+id/image_walking"
+        app:layout_constraintTop_toBottomOf="@+id/image_walking"/>
 
     <TextView
-        android:id="@+id/textRunning"
+        android:id="@+id/text_running"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/running"
-        app:layout_constraintEnd_toEndOf="@+id/imageRunning"
-        app:layout_constraintStart_toStartOf="@+id/imageRunning"
-        app:layout_constraintTop_toBottomOf="@+id/imageRunning"/>
+        app:layout_constraintEnd_toEndOf="@+id/image_running"
+        app:layout_constraintStart_toStartOf="@+id/image_running"
+        app:layout_constraintTop_toBottomOf="@+id/image_running"/>
 
     <Button
-        android:id="@+id/buttonStartActivity"
+        android:id="@+id/button_start_activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -108,14 +108,14 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageRunning"/>
+        app:layout_constraintTop_toBottomOf="@+id/image_running"/>
 
     <ImageView
-        android:id="@+id/imageChecked"
+        android:id="@+id/image_checked"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/imageWalking"
-        app:layout_constraintEnd_toEndOf="@+id/imageWalking"
+        app:layout_constraintBottom_toBottomOf="@id/image_walking"
+        app:layout_constraintEnd_toEndOf="@+id/image_walking"
         app:srcCompat="@drawable/resize_checked"/>
 
 </android.support.constraint.ConstraintLayout>

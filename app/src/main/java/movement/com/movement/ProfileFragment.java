@@ -130,16 +130,15 @@ public class ProfileFragment extends Fragment {
         super.onStart();
 
         AppCompatActivity compatActivity = (AppCompatActivity) getActivity();
-        if (compatActivity != null){
+        if (compatActivity != null) {
             ActionBar actionBar = compatActivity.getSupportActionBar();
-            if (actionBar != null){
+            if (actionBar != null) {
                 actionBar.setTitle("Profile");
             }
         }
 
         if (this.isAdded()) initUserRef();
     }
-
 
 
     @Override
@@ -192,7 +191,7 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_share_profile:
                 break;
             case R.id.menu_edit_profile:
@@ -209,7 +208,7 @@ public class ProfileFragment extends Fragment {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     User user = dataSnapshot.child(uid).getValue(User.class);
                     addProfileData(getContext(), user);
                 }

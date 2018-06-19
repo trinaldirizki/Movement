@@ -1,13 +1,18 @@
 package movement.com.movement.viewholder;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import movement.com.movement.CharityProgramFragment;
 import movement.com.movement.OverviewActivity;
 import movement.com.movement.R;
 import movement.com.movement.model.Movement;
@@ -37,8 +42,16 @@ public class CharityViewHolder extends RecyclerView.ViewHolder {
         mImageCharity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ScreenNavigator.navigateTo(mContext, OverviewActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK, "parcel_movement", movement);
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                openCharityProgramFragment(activity.getSupportFragmentManager(), movement);
             }
         });
+    }
+
+    private void openCharityProgramFragment(FragmentManager manager, Movement movement) {
+        Fragment fragment = CharityProgramFragment.newInstance(movement);
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.fragment_container_charity, fragment, fragment.getClass().getSimpleName());
+        transaction.addToBackStack(null).commit();
     }
 }

@@ -1,6 +1,7 @@
 package movement.com.movement;
 
 import android.net.Uri;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -21,7 +22,8 @@ import movement.com.movement.model.Charity;
 import movement.com.movement.viewholder.CharityViewHolder;
 
 public class CharityActivity extends AppCompatActivity
-        implements CharityListFragment.OnFragmentInteractionListener {
+        implements CharityListFragment.OnFragmentInteractionListener,
+        CharityProgramFragment.OnFragmentInteractionListener {
 
 
     @Override
@@ -41,6 +43,11 @@ public class CharityActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Parcelable parcelable) {
 
     }
 }

@@ -42,12 +42,12 @@ public class CharityActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onCharityListFragmentInteraction(Uri uri) {
 
     }
 
     @Override
-    public void onFragmentInteraction(Parcelable parcelable) {
+    public void onCharityProgramFragmentInteraction(Parcelable parcelable) {
 
     }
 }

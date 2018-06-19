@@ -72,7 +72,7 @@ public class NewsFragment extends Fragment {
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onNewsFragmentInteraction(uri);
         }
     }
 
@@ -134,6 +134,6 @@ public class NewsFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        void onNewsFragmentInteraction(Uri uri);
     }
 }

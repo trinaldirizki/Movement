@@ -110,7 +110,7 @@ public class ProfileFragment extends Fragment {
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onProfileFragmentInteraction(uri);
         }
     }
 
@@ -148,7 +148,7 @@ public class ProfileFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        void onProfileFragmentInteraction(Uri uri);
     }
 
     private void initBarDataset() {

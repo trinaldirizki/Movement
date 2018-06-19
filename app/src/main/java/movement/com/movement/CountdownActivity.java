@@ -24,7 +24,6 @@ public class CountdownActivity extends AppCompatActivity {
     DatabaseReference mSponsorRef;
     ImageView mImageSponsor;
     TextView mTextCountdown;
-    Sponsor mSponsor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +50,6 @@ public class CountdownActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                ScreenNavigator.navigateTo(getApplicationContext(), ProgressActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK, "parcel_sponsor", mSponsor);
                 finish();
             }
         }.start();
@@ -63,8 +61,8 @@ public class CountdownActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
-                    mSponsor = dataSnapshot.child("001").getValue(Sponsor.class);
-                    showSponsor();
+                    Sponsor sponsor = dataSnapshot.child("001").getValue(Sponsor.class);
+                    showSponsor(sponsor);
                 }
             }
 
@@ -75,7 +73,7 @@ public class CountdownActivity extends AppCompatActivity {
         });
     }
 
-    private void showSponsor() {
-        Glide.with(this).load(mSponsor.getLogoUrl()).into(mImageSponsor);
+    private void showSponsor(Sponsor sponsor) {
+        Glide.with(this).load(sponsor.getLogoUrl()).into(mImageSponsor);
     }
 }

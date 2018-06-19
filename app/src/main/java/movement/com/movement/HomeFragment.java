@@ -69,7 +69,7 @@ public class HomeFragment extends Fragment {
 
     public void onButtonPressed(Parcelable parcelable) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(parcelable);
+            mListener.onHomeFragmentInteraction(parcelable);
         }
     }
 
@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Parcelable parcelable);
+        void onHomeFragmentInteraction(Parcelable parcelable);
     }
 
     private View.OnClickListener activityOnClickListener = new View.OnClickListener() {

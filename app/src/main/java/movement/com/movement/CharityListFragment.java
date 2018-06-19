@@ -67,7 +67,7 @@ public class CharityListFragment extends Fragment {
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onCharityListFragmentInteraction(uri);
         }
     }
 
@@ -96,7 +96,7 @@ public class CharityListFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+        void onCharityListFragmentInteraction(Uri uri);
     }
 
     private void initCharityRef(){

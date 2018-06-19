@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import movement.com.movement.model.Movement;
+import movement.com.movement.util.ScreenNavigator;
 import movement.com.movement.util.StringFormatter;
 
 public class CharityProgramFragment extends Fragment {
@@ -67,7 +68,7 @@ public class CharityProgramFragment extends Fragment {
         mTextDetail = view.findViewById(R.id.text_program_detail);
         mProgressBar = view.findViewById(R.id.progress_program);
         mButtonStart = view.findViewById(R.id.button_program_start);
-
+        mButtonStart.setOnClickListener(activityStartListener);
         return view;
     }
 
@@ -94,18 +95,18 @@ public class CharityProgramFragment extends Fragment {
         mProgressBar.setProgress(progress);
         String progressText = String.valueOf(progress) + "% achieved";
         mTextProgress.setText(progressText);
-
-        mButtonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Clicked!!!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
+
+    private View.OnClickListener activityStartListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            ScreenNavigator.navigateTo(getContext(), ProgressActivity.class);
+        }
+    };
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onCharityProgramFragmentInteraction(uri);
         }
     }
 
@@ -127,6 +128,6 @@ public class CharityProgramFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Parcelable parcelable);
+        void onCharityProgramFragmentInteraction(Parcelable parcelable);
     }
 }

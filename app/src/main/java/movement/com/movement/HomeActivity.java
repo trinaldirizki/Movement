@@ -183,10 +183,6 @@ public class HomeActivity extends AppCompatActivity
         transaction.addToBackStack(null).commit();
     }
 
-    @Override
-    public void onFragmentInteraction(Parcelable parcelable) {
-
-    }
 
     private void initUserRef() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -210,10 +206,19 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+
     @Override
-    public void onFragmentInteraction(Uri uri) {
+    public void onHomeFragmentInteraction(Parcelable parcelable) {
 
     }
 
+    @Override
+    public void onNewsFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public void onProfileFragmentInteraction(Uri uri) {
+
+    }
 }

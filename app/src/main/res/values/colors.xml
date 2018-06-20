@@ -2,13 +2,14 @@
 <resources>
     <color name="colorPrimaryLight">#ef6c00</color>
     <color name="colorPrimary">#e65100</color>
-    <color name="colorPrimaryDark">#E65100</color>
+    <color name="colorPrimaryDark">#e65100</color>
     <color name="colorAccent">#ffe0b2</color>
     <color name="colorLightGray">#EEEEEE</color>
     <color name="colorFacebook">#3b5998</color>
     <color name="colorGoogle">#d62d20</color>
     <color name="colorWalking">#43A047</color>
-    <color name="colorRed">#F44336</color>
-    <color name="colorYellow">#FFEB3B</color>
-    <color name="colorAmber">#FFC107</color>
+    <color name="colorRed">#f44336</color>
+    <color name="colorYellow">#ffeb3b</color>
+    <color name="colorAmber">#ffc107</color>
+    <color name="colorYellowLight">#FFE082</color>
 </resources>

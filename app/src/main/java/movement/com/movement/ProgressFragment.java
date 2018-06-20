@@ -2,6 +2,7 @@ package movement.com.movement;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -33,11 +34,12 @@ public class ProgressFragment extends Fragment {
 
     ImageView mImageLogo, mImageAd;
     TextView mTextDonation, mTextDuration, mTextDistance;
-    ImageButton mButtonMusic;
-    Button mButtonFinish;
+    ImageButton mButtonMusic, mButtonStop, mButtonPause;
 
     DatabaseReference mSponsorRef;
     Sponsor mSponsor;
+
+    LocationManager mLocationManager;
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -71,9 +73,10 @@ public class ProgressFragment extends Fragment {
         mTextDonation = view.findViewById(R.id.text_progress_donation);
         mTextDuration = view.findViewById(R.id.text_progress_duration);
         mTextDistance = view.findViewById(R.id.text_progress_distance);
-        mButtonFinish = view.findViewById(R.id.button_progress_finish);
+        mButtonStop = view.findViewById(R.id.button_progress_stop);
+        mButtonPause = view.findViewById(R.id.button_progress_pause);
         mButtonMusic = view.findViewById(R.id.button_play_music);
-        mButtonFinish.setOnClickListener(new View.OnClickListener() {
+        mButtonStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ScreenNavigator.navigateTo(getContext(), SelectPictureActivity.class, Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

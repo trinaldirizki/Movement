@@ -1,10 +1,14 @@
 package movement.com.movement;
 
+import android.app.ProgressDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
@@ -33,13 +37,19 @@ public class ProgressFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     ImageView mImageLogo, mImageAd;
-    TextView mTextDonation, mTextDuration, mTextDistance;
+    static TextView mTextDonation, mTextDuration, mTextDistance;
     ImageButton mButtonMusic, mButtonStop, mButtonPause;
 
     DatabaseReference mSponsorRef;
     Sponsor mSponsor;
 
     LocationManager mLocationManager;
+    static boolean status;
+    static long startTime, endTime;
+    static ProgressDialog progressDialog;
+    static int p = 0;
+
+    LocationService mService;
 
     public ProgressFragment() {
         // Required empty public constructor
@@ -140,5 +150,34 @@ public class ProgressFragment extends Fragment {
         if (getContext() == null) return;
         Glide.with(getContext()).load(sponsor.getLogoUrl()).into(mImageLogo);
         Glide.with(getContext()).load(sponsor.getAdUrl()).into(mImageAd);
+    }
+
+    private ServiceConnection sc = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            LocationService.LocalBinder binder = (LocationService.LocalBinder) service;
+            mService = binder.getService();
+            status = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            status = false;
+        }
+    };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (status == true){
+            unbindService();
+        }
+    }
+
+    private void unbindService() {
+        if (status == false) return;
+        Intent intent = new Intent(getContext(), LocationService.class);
+        mService.unbindService(sc);
+        status = false;
     }
 }

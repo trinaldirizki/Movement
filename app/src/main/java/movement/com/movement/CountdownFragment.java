@@ -120,7 +120,8 @@ public class CountdownFragment extends Fragment {
 
             @Override
             public void onFinish() {
-                openProgressFragment();
+                //openProgressFragment();
+                ScreenNavigator.navigateTo(getContext(), CountdownActivity.class);
             }
         }.start();
     }
